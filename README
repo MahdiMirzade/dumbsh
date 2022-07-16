@@ -1,0 +1,61 @@
+dumbsh - dumb shell
+===================
+Your shell is dumb, make it smarter.
+
+
+Description
+-----------
+If you have multiple layouts in your keyboard mappings, sometimes
+you are typing in your second layout by mistake, like this:
+
+	عدشپث
+
+But you meant:
+
+	uname
+
+By default, your shell will not understand what you wanted to say (of
+course shell is the dumb one in this situation, you're never wrong)
+
+After installing this script, a layout table will be generated from
+your second layout to your first layout, using xmodmap. (Your first
+layout is english and your second layout is your other language)
+
+
+Installation
+------------
+Enter the following command to source the dumb.sh script once you've
+entered to your shell: (bash in this example)
+
+	echo "source path/to/dumb.sh" >> ~/.bashrc
+
+or if you're a zsh user:
+
+	echo "source path/to/dumb.sh" >> ~/.zshrc
+
+Restart your shell. Now when you are typing on your second layout, your
+commands will be translated using the layout table which you've generated
+on the first execution.
+
+This script is supported both on zsh and bash, but if you are using
+something else, you'll need to find a way to handle non-found commands
+in your shell, if there is a function for it in your shell, edit the script
+and add like how bash is added as a support.
+
+
+Configuration
+-------------
+This script can be configured through environmental variables:
+
+	DUMBSH_KEY_INDEX:
+		If set, the layout table will be generated to the place
+		you've set, but if not it sets to:
+		$XDG_DATA_HOME/dumbsh_table
+		$HOME/.local/share/dumbsh_table
+	
+	DUMBSH_ASK_REPLACE:
+		If set to true, It'll ask before running the command,
+		or else it'll Automatically run the translated command.
+
+You can set these variables in your shell configuration/login profile in
+order to config this script.
